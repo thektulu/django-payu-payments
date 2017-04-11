@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-11 10:14+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: admin.py:30
+msgid "Status"
+msgstr "Stav"
+
+#: apps.py:7
+msgid "PayU"
+msgstr "PayU"
+
+#: models.py:28
+msgid "New"
+msgstr "Nová"
+
+#: models.py:29
+msgid "Pending"
+msgstr "Čekající"
+
+#: models.py:30
+msgid "Waiting for confirmation"
+msgstr "Čeká na potvrzení"
+
+#: models.py:31
+msgid "Completed"
+msgstr "Hotovo"
+
+#: models.py:32
+msgid "Canceled"
+msgstr "Zrušeno"
+
+#: models.py:33
+msgid "Rejected"
+msgstr "Zamítnuto"
+
+#: models.py:40
+msgid "PayU order ID"
+msgstr "PayU ID objednávky"
+
+#: models.py:42
+msgid "PayU POS ID"
+msgstr "PayU POS ID"
+
+#: models.py:43
+msgid "customer IP"
+msgstr "IP zákazníka"
+
+#: models.py:45
+msgid "creation date"
+msgstr "datum vytvoření"
+
+#: models.py:48
+msgid "status"
+msgstr "stav"
+
+#: models.py:50
+msgid "total"
+msgstr "celkem"
+
+#: models.py:51
+msgid "description"
+msgstr "popis"
+
+#: models.py:52
+msgid "products"
+msgstr "produkty"
+
+#: models.py:53
+msgid "notes"
+msgstr "poznámky"
+
+#: models.py:58
+msgid "payment"
+msgstr "platba"
+
+#: models.py:59
+msgid "payments"
+msgstr "Platby"
+
+#: models.py:161
+msgid "Total"
+msgstr "Celkem"
+
+#: models.py:178
+msgid "Product"
+msgstr "Produkt"
+
+#: models.py:178
+msgid "Unit price"
+msgstr "Jednotková cena"
+
+#: models.py:178
+msgid "Quantity"
+msgstr "Množství"
+
+#: models.py:178
+msgid "Sum"
+msgstr "Suma"
+
+#: models.py:199
+msgid "Invalid data."
+msgstr "Chybná data."
+
+#: models.py:200
+msgid "Products"
+msgstr "Produkty"
