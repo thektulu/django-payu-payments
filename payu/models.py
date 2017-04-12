@@ -9,6 +9,7 @@ from django.core.urlresolvers import reverse
 from django.utils.html import escape, format_html, mark_safe
 from django.utils.http import urlencode
 from django.contrib.humanize.templatetags.humanize import intcomma
+from django.dispatch import Signal
 
 from jsonfield import JSONField
 from ipware.ip import get_real_ip, get_ip
@@ -31,6 +32,9 @@ STATUS_CHOICES = (
     ('CANCELED', _('Canceled')),
     ('REJECTED', _('Rejected')),
 )
+
+
+payment_notified = Signal(providing_args=['payment', 'status'])
 
 
 class Payment(models.Model):

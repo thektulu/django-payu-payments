@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.utils.html import escape
 
-from .models import Payment
+from .models import Payment, payment_notified
 from . import settings as payu_settings
 
 
@@ -47,7 +47,12 @@ def notify(request):
 
     status = escape(data['order']['status'])
     if status in ('PENDING', 'WAITING_FOR_CONFIRMATION', 'COMPLETED',
-                  'CANCELED', 'REJECTED'):
+                  'CANCELED', 'REJECTED') and payment.status != status:
         payment.status = status
         payment.save()
+        payment_notified.send(
+            sender=payment.__class__,
+            payment=payment,
+            status=status
+        )
     return HttpResponse(status=200)
