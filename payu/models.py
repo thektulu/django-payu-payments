@@ -55,6 +55,10 @@ class Payment(models.Model):
     products = JSONField(_('products'), default='', blank=True)
     notes = models.TextField(_('notes'), null=True, blank=True)
 
+    currency_code = models.CharField(
+        _('currency code'), max_length=3, default=payu_settings.PAYU_CURRENCY_CODE
+    )
+
     class Meta:
         app_label = 'payu'
         ordering = ('-created',)
@@ -80,7 +84,8 @@ class Payment(models.Model):
 
     @classmethod
     def create(cls, request, description, products, buyer,
-               validity_time=payu_settings.PAYU_VALIDITY_TIME, notes=None):
+               validity_time=payu_settings.PAYU_VALIDITY_TIME, notes=None,
+               currency_code=payu_settings.PAYU_CURRENCY_CODE):
         try:
             processed_products = [{
                 'name': p['name'],
@@ -102,7 +107,8 @@ class Payment(models.Model):
             total=total,
             description=description,
             products=json.dumps(processed_products),
-            notes=notes
+            notes=notes,
+            currency_code=currency_code,
         )
         # not saved yet!
 
@@ -112,7 +118,7 @@ class Payment(models.Model):
                 'customerIp': customer_ip,
                 'merchantPosId': payu_settings.PAYU_POS_ID,
                 'description': description,
-                'currencyCode': 'PLN',
+                'currencyCode': currency_code,
                 'totalAmount': total,
                 'products': processed_products,
                 'buyer': buyer,
@@ -159,8 +165,14 @@ class Payment(models.Model):
                                  urlencode({'no_payment': 1}))
             }
 
+    def format_currency(self, amount):
+        return '{} {}'.format(
+            intcomma(round(Decimal(amount / 100), 2)),
+            self.currency_code
+        )
+
     def get_total_display(self):
-        return '{} PLN'.format(intcomma(round(Decimal(self.total / 100), 2)))
+        return self.format_currency(self.total)
     get_total_display.short_description = _('Total')
 
     def get_products_table(self):
@@ -181,17 +193,15 @@ class Payment(models.Model):
                 _('Product'), _('Unit price'), _('Quantity'), _('Sum')
             )
             for p in products:
-                unit_price = intcomma(round(Decimal(p['unitPrice'] / 100), 2))
-                product_sum = intcomma(
-                    round(Decimal(p['unitPrice'] / 100), 2) * p['quantity']
-                )
+                unit_price = self.format_currency(p['unitPrice'])
+                product_sum = self.format_currency(p['unitPrice'] * p['quantity'])
                 output += format_html(
                     '''
                         <tr>
                             <td>{}</td>
-                            <td>{} PLN</td>
                             <td>{}</td>
-                            <td>{} PLN</td>
+                            <td>{}</td>
+                            <td>{}</td>
                         </tr>
                     ''',
                     p['name'], unit_price, p['quantity'], product_sum

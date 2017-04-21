@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
 
 
 TEST_POS_ID = 145227
@@ -11,3 +12,10 @@ PAYU_SECOND_MD5_KEY = getattr(settings, 'PAYU_SECOND_MD5_KEY',
                               TEST_SECOND_MD5_KEY)
 PAYU_CONTINUE_PATH = getattr(settings, 'PAYU_CONTINUE_PATH', '/')
 PAYU_VALIDITY_TIME = getattr(settings, 'PAYU_VALIDITY_TIME', 600)
+
+PAYU_CURRENCY_CODE = getattr(settings, 'PAYU_CURRENCY_CODE', 'PLN')
+
+SUPPORTED_CURRENCY_CODES = {
+    'PLN': _('PLN'),
+    'CZK': _('CZK'),
+}

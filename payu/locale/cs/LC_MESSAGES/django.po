@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-11 10:14+0200\n"
+"POT-Creation-Date: 2017-04-11 23:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,98 +26,110 @@ msgstr "Stav"
 msgid "PayU"
 msgstr "PayU"
 
-#: models.py:28
+#: models.py:27
 msgid "New"
 msgstr "Nová"
 
-#: models.py:29
+#: models.py:28
 msgid "Pending"
 msgstr "Čekající"
 
-#: models.py:30
+#: models.py:29
 msgid "Waiting for confirmation"
 msgstr "Čeká na potvrzení"
 
-#: models.py:31
+#: models.py:30
 msgid "Completed"
 msgstr "Hotovo"
 
-#: models.py:32
+#: models.py:31
 msgid "Canceled"
 msgstr "Zrušeno"
 
-#: models.py:33
+#: models.py:32
 msgid "Rejected"
 msgstr "Zamítnuto"
 
-#: models.py:40
+#: models.py:39
 msgid "PayU order ID"
 msgstr "PayU ID objednávky"
 
-#: models.py:42
+#: models.py:41
 msgid "PayU POS ID"
 msgstr "PayU POS ID"
 
-#: models.py:43
+#: models.py:42
 msgid "customer IP"
 msgstr "IP zákazníka"
 
-#: models.py:45
+#: models.py:44
 msgid "creation date"
 msgstr "datum vytvoření"
 
-#: models.py:48
+#: models.py:47
 msgid "status"
 msgstr "stav"
 
-#: models.py:50
+#: models.py:49
 msgid "total"
 msgstr "celkem"
 
-#: models.py:51
+#: models.py:50
 msgid "description"
 msgstr "popis"
 
-#: models.py:52
+#: models.py:51
 msgid "products"
 msgstr "produkty"
 
-#: models.py:53
+#: models.py:52
 msgid "notes"
 msgstr "poznámky"
 
-#: models.py:58
+#: models.py:55
+msgid "currency code"
+msgstr ""
+
+#: models.py:61
 msgid "payment"
 msgstr "platba"
 
-#: models.py:59
+#: models.py:62
 msgid "payments"
 msgstr "Platby"
 
-#: models.py:161
+#: models.py:172
 msgid "Total"
 msgstr "Celkem"
 
-#: models.py:178
+#: models.py:189
 msgid "Product"
 msgstr "Produkt"
 
-#: models.py:178
+#: models.py:189
 msgid "Unit price"
 msgstr "Jednotková cena"
 
-#: models.py:178
+#: models.py:189
 msgid "Quantity"
 msgstr "Množství"
 
-#: models.py:178
+#: models.py:189
 msgid "Sum"
 msgstr "Suma"
 
-#: models.py:199
+#: models.py:208
 msgid "Invalid data."
 msgstr "Chybná data."
 
-#: models.py:200
+#: models.py:209
 msgid "Products"
 msgstr "Produkty"
+
+#: settings.py:19
+msgid "PLN"
+msgstr "Pln"
+
+#: settings.py:20
+msgid "CZK"
+msgstr "Kč"
