@@ -18,4 +18,5 @@ PAYU_CURRENCY_CODE = getattr(settings, 'PAYU_CURRENCY_CODE', 'PLN')
 SUPPORTED_CURRENCY_CODES = {
     'PLN': _('PLN'),
     'CZK': _('CZK'),
+    'EUR': _('EUR'),
 }
