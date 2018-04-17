@@ -1,4 +1,5 @@
 import uuid
+import logging
 import json
 import requests
 from decimal import Decimal
@@ -16,6 +17,8 @@ from ipware.ip import get_real_ip, get_ip
 
 from . import settings as payu_settings
 
+
+logger = logging.getLogger(__name__)
 
 ENDPOINT_URL = 'https://secure.payu.com/api/v2_1/orders'
 OAUTH_URL = 'https://secure.payu.com/pl/standard/user/oauth/authorize'
@@ -79,7 +82,7 @@ class Payment(models.Model):
             oauth_request = requests.post(OAUTH_URL, data=oauth_request_data)
             response = oauth_request.json()
             return response['access_token']
-        except:
+        except Exception as exc:
             return False
 
     @classmethod
@@ -89,7 +92,7 @@ class Payment(models.Model):
         try:
             processed_products = [{
                 'name': p['name'],
-                'unitPrice': int(p['unitPrice']*100),
+                'unitPrice': int(p['unitPrice'] * 100),
                 'quantity': p['quantity']
             } for p in products]
         except (KeyError, ValueError):
@@ -153,7 +156,8 @@ class Payment(models.Model):
                     'object': payment,
                     'redirect_url': redirect_url
                 }
-            except:
+            except Exception as exc:
+                logger.exception(str(exc))
                 return False
 
         else:  # total == 0
