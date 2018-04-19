@@ -88,7 +88,8 @@ class Payment(models.Model):
     @classmethod
     def create(cls, request, description, products, buyer,
                validity_time=payu_settings.PAYU_VALIDITY_TIME, notes=None,
-               currency_code=payu_settings.PAYU_CURRENCY_CODE):
+               currency_code=payu_settings.PAYU_CURRENCY_CODE,
+               continue_url=None):
         try:
             processed_products = [{
                 'name': p['name'],
@@ -130,7 +131,7 @@ class Payment(models.Model):
                     reverse('payu:api:notify')
                 ),
                 'continueUrl': request.build_absolute_uri(
-                    payu_settings.PAYU_CONTINUE_PATH
+                    continue_url if continue_url is not None else payu_settings.PAYU_CONTINUE_PATH
                 ),
                 'validityTime': validity_time
             }
